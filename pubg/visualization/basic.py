@@ -1,10 +1,11 @@
 import pandas as pd
 import datetime
 import numpy as np
-import matplotlib
+import matplotlib.pyplot as plt
+import math
 
 
-def main():
+def killLoad():
     dir = '/Users/JoshLevin/PycharmProjects/data-visualizations/pubg/'
 
     print(str(datetime.datetime.now()))
@@ -54,19 +55,66 @@ def isWin(val):
 def winPct(row):
     return float(row['total']['win']) / float(row['total']['matches'])
 
-
-def vis():
+# Takes as input
+# INPUT: kills ; win ; matches ; winpct
+# OUTPUT: Chart showing winpct/matches
+def killVis():
     dir = '/Users/JoshLevin/PycharmProjects/data-visualizations/pubg/visualization/'
 
     df = pd.read_csv(dir + 'output.csv')
 
-    df.plot(kind='line', x='kills', y='wpct')
+    plt.figure()
 
-    #df.plot(kind='line', x='kills', y='matches')
+    ax = df.plot(kind='line', x='kills', y='wpct',
+            xlim= (0,30))
 
-    matplotlib.pyplot.show()
+    df.plot(kind='line', x='kills', y='matches',
+            ax = ax,
+            secondary_y=True,
+            xlim=(0, 30))
 
+    ax.right_ax.set_yscale='log'
+    ax.legend(['Win Pct %', 'Matches (right)'])
+
+
+    plt.show()
+
+
+def minMapLoad():
+    dir = '/Users/JoshLevin/PycharmProjects/data-visualizations/pubg/'
+
+    deaths = pd.read_csv(filepath_or_buffer=dir+'source/pubg-match-deaths/deaths/kill_match_stats_final_0.csv')
+
+    deaths = deaths[deaths['map'] == 'ERANGEL']
+
+    deaths = deaths[['killer_position_x',
+                     'killer_position_y',
+                     'time']]
+
+
+    #bins = [x for x in range(1, math.ceil(deaths['time'].max()/60) + 1)]
+    # Bin by minute
+    # deaths['time'] = pd.cut(deaths['time'],
+    #                        bins=bins)
+
+    # First minute deaths
+    deaths = deaths[deaths['time'] < 60].dropna()
+
+    deaths = [['killer_position_x', 'killer_position_y']]
+
+    scale = lambda x : x * 4096 / 800000
+    deaths = deaths.apply(scale)
+
+
+    np.histogram2d(x=deaths['killer_position_x'], y=deaths['killer position y'], bins=100)
+
+    fig, ax = plt.subplots(figsize=(24, 24))
+
+    ax.set_xlim(0, 4096)
+    ax.set_ylim(0, 4096)
+
+    plt.show()
 
 if __name__ == '__main__':
-    vis()
-    #main()
+    minMapLoad()
+#main()
