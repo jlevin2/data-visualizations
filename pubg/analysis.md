@@ -14,7 +14,7 @@ Let's look at where players kill by game period. I chose to look at 3 periods.
 - Between 10-20 min (**Green**)
 - Post 20 min (**Orange**)
 
-![All 3]('visualization/all_3.png')
+![All 3](visualization/all_3.png)
 
 Takeaways:
 1. Early game kills are generally in highly urban areas, specifically Pochinki, School, and over by Mylta.
@@ -31,7 +31,7 @@ Rather than look at kills by individual weapons, we can look at weapon types (AR
 
 There use over time can show how players chose loadouts further into the game.
 
-![Weapon Types]('visualization/weapon_type.png')
+![Weapon Types](visualization/weapon_type.png)
 
 Takeaways:
 1. ARs are the most popular weapon from start to end; they offer so much flexibility and
@@ -50,14 +50,14 @@ but the data shows a good AR is always are best.
 Next, let's look at where weapons are sourced. This meaning either from spawn or from crates.
 Crate weapons are generally stronger, but let's see if they are used most late into games.
 
-![Weapon Source]('visualization/weapon_source.png')
+![Weapon Source](visualization/weapon_source.png)
 
 It appears that despite their popularity, crate weapons don't make up a significant share of
 kills. Though, they are definitely used at a higher rate the later the game goes on.
 
 Is there skew in where crate weapons are used to kill?
 
-![Crate Kills]('visualization/crate_kills.png')
+![Crate Kills](visualization/crate_kills.png)
 
 As can be seen, crate kills are pretty evenly spread out. This makes sense for 2 reasons,
 first we already showed that kills are more even in the late game (when Crates drop) and because
@@ -65,9 +65,9 @@ crates are random we would expect their kills to be semi-random across the map.
 
 ## Appendix
 
-![Early Game]('visualization/early_game.png')
+![Early Game](visualization/early_game.png)
 
-![Mid Game]('visualization/mid_game.png')
+![Mid Game](visualization/mid_game.png)
 
-![Late Game]('visualization/late_game.png')
+![Late Game](visualization/late_game.png)
 
